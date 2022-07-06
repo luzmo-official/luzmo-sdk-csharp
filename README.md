@@ -8,8 +8,14 @@ dotnet build
 dotnet test
 ```
 
+## Pushing to Nuget registry  
 
-```
+Usually you have to call pack to create nupkg, but I changed csproj configuration to remove that.  
+
+
+Get API Key from https://www.nuget.org/account/apikeys , sign in using developer_cumulio@outlook.com account.
+
+```sh
 cd CumulioSDK
 dotnet build --configuration Release
 dotnet nuget push ./bin/Release/CumulioSDK.1.0.1.nupkg --api-key API_KEY --source https://api.nuget.org/v3/index.json
