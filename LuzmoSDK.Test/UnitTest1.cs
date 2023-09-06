@@ -1,4 +1,4 @@
-namespace CumulioSDK.Test;
+namespace LuzmoSDK.Test;
 
 public class UnitTest1
 {

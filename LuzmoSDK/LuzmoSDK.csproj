@@ -1,13 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFrameworks>net7.0;net6.0</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <PackageId>CumulioSDK</PackageId>
-    <Version>1.0.1</Version>
-    <Authors>Cumulio</Authors>
-    <Company>Cumulio</Company>
+    <PackageId>LuzmoSDK</PackageId>
+    <Version>1.0.3</Version>
+    <Authors>Luzmo</Authors>
+    <Company>Luzmo</Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
