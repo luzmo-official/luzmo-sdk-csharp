@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CumulioSDK", "CumulioSDK\CumulioSDK.csproj", "{B5B989E5-0B6F-46EC-A863-50B5E560376A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuzmoSDK", "LuzmoSDK\LuzmoSDK.csproj", "{B5B989E5-0B6F-46EC-A863-50B5E560376A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleApp", "ExampleApp\ExampleApp.csproj", "{9D869058-654E-4E5C-B0D7-C2827E5A5A07}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CumulioSDK.Test", "CumulioSDK.Test\CumulioSDK.Test.csproj", "{7A71F278-B87C-4051-B777-38DD48CFC7B1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuzmoSDK.Test", "LuzmoSDK.Test\LuzmoSDK.Test.csproj", "{7A71F278-B87C-4051-B777-38DD48CFC7B1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

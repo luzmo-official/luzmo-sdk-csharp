@@ -7,25 +7,33 @@ using System.Net;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace CumulioAPI
+namespace LuzmoSDK
 {
 
-  public class Cumulio
+  public class Luzmo
   {
-    public string app = "https://app.cumul.io";
-    public string host = "https://api.cumul.io";
+    public string app = "https://app.luzmo.com";
+    public string host = "https://api.luzmo.com";
     public string port = "443";
     public string apiVersion = "0.1.0";
     public string apiKey;
     public string apiToken;
 
-    public Cumulio(string apiKey, string apiToken)
+    public Luzmo(string apiKey, string apiToken)
     {
       this.apiKey = apiKey;
       this.apiToken = apiToken;
     }
 
-    public Cumulio(string host, string port, string apiVersion, string apiKey, string apiToken)
+    public Luzmo(string apiKey, string apiToken, string host, string port = "443")
+    {
+      this.apiKey = apiKey;
+      this.apiToken = apiToken;
+      this.host = host;
+      this.port = port;
+    }
+
+    public Luzmo(string host, string port, string apiVersion, string apiKey, string apiToken)
     {
       this.host = host;
       this.port = port;
@@ -64,7 +72,7 @@ namespace CumulioAPI
 
     public async Task<dynamic> createAsync(string resource, ExpandoObject properties, List<ExpandoObject> associations)
     {
-      CumulioQuery query = new CumulioQuery();
+      LuzmoQuery query = new LuzmoQuery();
       query.action = "create";
       query.properties = properties;
       query.associations = associations;
@@ -84,7 +92,7 @@ namespace CumulioAPI
 
     public async Task<dynamic> getAsync(string resource, ExpandoObject filter)
     {
-      CumulioQuery query = new CumulioQuery();
+      LuzmoQuery query = new LuzmoQuery();
       query.action = "get";
       query.find = filter;
 
@@ -104,7 +112,7 @@ namespace CumulioAPI
 
     public async Task<dynamic> deleteAsync(string resource, string id, ExpandoObject properties)
     {
-      CumulioQuery query = new CumulioQuery();
+      LuzmoQuery query = new LuzmoQuery();
       query.action = "delete";
       query.id = id;
       query.properties = properties;
@@ -125,7 +133,7 @@ namespace CumulioAPI
 
     public async Task<dynamic> updateAsync(string resource, string id, ExpandoObject properties)
     {
-      CumulioQuery query = new CumulioQuery();
+      LuzmoQuery query = new LuzmoQuery();
       query.action = "update";
       query.id = id;
       query.properties = properties;
@@ -150,7 +158,7 @@ namespace CumulioAPI
       association.role = associationRole;
       association.id = associationId;
 
-      CumulioQuery query = new CumulioQuery();
+      LuzmoQuery query = new LuzmoQuery();
       query.action = "associate";
       query.id = id;
       query.resource = association;
@@ -176,7 +184,7 @@ namespace CumulioAPI
       association.role = associationRole;
       association.id = associationId;
 
-      CumulioQuery query = new CumulioQuery();
+      LuzmoQuery query = new LuzmoQuery();
       query.action = "dissociate";
       query.id = id;
       query.resource = association;
@@ -197,7 +205,7 @@ namespace CumulioAPI
 
     public async Task<dynamic> queryAsync(ExpandoObject filter)
     {
-      CumulioQuery query = new CumulioQuery();
+      LuzmoQuery query = new LuzmoQuery();
       query.action = "get";
       query.find = filter;
 
@@ -213,7 +221,7 @@ namespace CumulioAPI
 
     /* Helpers */
 
-    private async Task<dynamic> _emit(string resource, string action, CumulioQuery query)
+    private async Task<dynamic> _emit(string resource, string action, LuzmoQuery query)
     {
       query.key = apiKey;
       query.token = apiToken;
@@ -234,12 +242,12 @@ namespace CumulioAPI
           result = "{error: 'An unexpected error occurred. Please try again later!'}";
         else
           result = await (new StreamReader(e.Response.GetResponseStream()).ReadToEndAsync());
-        throw new CumulioException(JsonConvert.DeserializeObject(result));
+        throw new LuzmoException(JsonConvert.DeserializeObject(result));
       }
     }
   }
 
-  class CumulioQuery
+  class LuzmoQuery
   {
     public string key;
     public string token;
@@ -252,24 +260,24 @@ namespace CumulioAPI
     public ExpandoObject find;                // Query filters
   }
 
-  public class CumulioException : Exception
+  public class LuzmoException : Exception
   {
     public int code;
     public dynamic details;
 
-    public CumulioException()
+    public LuzmoException()
     {
     }
 
-    public CumulioException(string message) : base(message)
+    public LuzmoException(string message) : base(message)
     {
     }
 
-    public CumulioException(string message, Exception inner) : base(message, inner)
+    public LuzmoException(string message, Exception inner) : base(message, inner)
     {
     }
 
-    public CumulioException(dynamic result)
+    public LuzmoException(dynamic result)
     {
       if (result.code != null)
       this.code = result.code;

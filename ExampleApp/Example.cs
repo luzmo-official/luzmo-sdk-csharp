@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Dynamic;
-using CumulioAPI; 
+using LuzmoSDK; 
 
 namespace ExampleApp
 {
@@ -10,7 +10,7 @@ namespace ExampleApp
 		public static void Main()
 		{
 			// Set the API key and token
-			Cumulio client = new Cumulio("< Your API key >", "< Your API token >");
+			Luzmo client = new Luzmo("< Your API key >", "< Your API token >");
       dynamic properties;
       List<ExpandoObject> associations;
 
@@ -78,8 +78,8 @@ namespace ExampleApp
         Console.WriteLine("Data rows pushed");
 
       }
-      catch (CumulioException e) {
-        Console.WriteLine("Error during communication with Cumul.io: " + e.details);
+      catch (LuzmoException e) {
+        Console.WriteLine("Error during communication with Luzmo: " + e.details);
       }
 
 		}

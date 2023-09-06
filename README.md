@@ -1,42 +1,21 @@
+# Luzmo API
+
+You can use this C# project to interact with the [Luzmo](https://luzmo.com) API in order to create, modify or delete datasets, dashboards or push new data into the platform in a programmatic way.
+
+## Usage
+
+See the `ExampleApp/Example.cs` file for examples how to create datasets or push data into the platform (triggering real-time dashboard updates).
+
+## Documentation
+
+The API documentation (available services and methods) can be found [here](https://developer.luzmo.com/).
+
 
 ## XUnit Unit tests  
 
 ```sh
-cd CumulioSDK.Test
+cd LuzmoSDK.Test
 dotnet restore
 dotnet build
 dotnet test
-```
-
-## Pushing to Nuget registry  
-
-Usually you have to call pack to create nupkg, but I changed csproj configuration to remove that.  
-
-
-Get API Key from https://www.nuget.org/account/apikeys , sign in using developer_cumulio@outlook.com account.
-
-```sh
-cd CumulioSDK
-dotnet build --configuration Release
-dotnet nuget push ./bin/Release/CumulioSDK.1.0.1.nupkg --api-key API_KEY --source https://api.nuget.org/v3/index.json
-```
-
-
-## How the project was created
-
-```
-dotnet new sln
-dotnet new classlib -o CumulioSDK
-dotnet new xunit -o CumulioSDK.Test
-dotnet new console -o ExampleApp
-dotnet sln add CumulioSDK
-dotnet sln add CumulioSDK.Test
-dotnet sln add ExampleApp
-cd CumulioSDK.Test
-dotnet add reference ../CumulioSDK
-cd ../ExampleApp
-dotnet add reference ../CumulioSDK
-cd ..
-dotnet restore
-dotnet build
 ```
